@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SSSC Business Hub — pusat pembelajaran bisnis offline, bisnis online, literasi keuangan, investasi, dan teknologi blockchain.">
+<meta name="theme-color" content="#102638">
+<title>SSSC Business Hub — Learn, Build, Grow</title>
+<style>
+:root{
+  --navy:#102638;--navy2:#193b52;--gold:#d8b66c;--ink:#1e2d38;
+  --muted:#667783;--paper:#f4f6f7;--white:#fff;--line:#e3e9ed;
+  --soft:#eaf0f4;--green:#287b62;--shadow:0 14px 40px rgba(16,38,56,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);line-height:1.72}
+button,input{font:inherit}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(16,38,56,.97);color:#fff;box-shadow:0 4px 18px #08192535}
+.nav{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+.brand-mark{width:42px;height:42px;border:1px solid #d8b66c;border-radius:11px;display:grid;place-items:center;color:var(--gold);font-size:23px}
+.brand-name{font-weight:800;letter-spacing:2px;font-size:19px;line-height:1.1}
+.brand-name small{display:block;font-size:9px;letter-spacing:3px;color:#c9d4dc;margin-top:5px}
+.navlinks{display:flex;align-items:center;gap:20px}
+.navlinks a{font-size:12px;color:#e4ebef}
+.navlinks a:hover{color:var(--gold)}
+.nav-toggle{display:none;background:none;border:1px solid #ffffff55;color:#fff;border-radius:8px;padding:6px 10px;font-size:20px}
+.hero{background:radial-gradient(circle at 85% 20%,#31536a 0,transparent 34%),linear-gradient(120deg,#102638,#193b52);color:#fff;padding:88px 22px 82px}
+.wrap{max-width:1120px;margin:auto}
+.eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.hero h1{font-size:clamp(37px,6vw,66px);line-height:1.08;max-width:780px;margin:18px 0}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:680px;color:#d7e1e7;font-size:16px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:8px;padding:12px 19px;font-weight:700;font-size:13px;transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#172b39}
+.btn-outline{border:1px solid #ffffff70;color:#fff;background:transparent}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-light{background:var(--soft);color:var(--navy)}
+section{padding:72px 22px}
+.section-head{text-align:center;max-width:720px;margin:0 auto 34px}
+.section-head h2{font-size:clamp(26px,4vw,36px);color:var(--navy);line-height:1.2;margin:8px 0}
+.section-head p{font-size:14px;color:var(--muted)}
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.category-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:24px 20px;text-align:left;box-shadow:0 4px 18px #10263808;transition:.22s;min-height:220px;display:flex;flex-direction:column;align-items:flex-start}
+.category-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#d8b66c}
+.book-icon{width:58px;height:58px;border-radius:15px;background:#edf2f5;display:grid;place-items:center;font-size:30px;margin-bottom:16px}
+.category-card h3{color:var(--navy);font-size:17px;margin-bottom:7px}
+.category-card p{font-size:12px;color:var(--muted);line-height:1.6}
+.card-link{color:#96752f;font-weight:800;font-size:12px;margin-top:auto;padding-top:16px}
+.note{background:#fff8e8;border-left:4px solid var(--gold);padding:15px 17px;border-radius:7px;font-size:12px;color:#66552e;margin-top:22px}
+.page{display:none;min-height:65vh}
+.page.active{display:block}
+.page-top{background:linear-gradient(120deg,#102638,#193b52);color:#fff;padding:44px 22px}
+.page-top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.page-top h1{font-size:clamp(27px,4vw,42px);margin:6px 0}
+.page-top p{color:#d5e0e6;font-size:13px;max-width:680px}
+.back-btn{border:1px solid #ffffff70;color:#fff;background:transparent;border-radius:8px;padding:9px 13px;font-size:12px}
+.content-layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:25px;align-items:start}
+.sidebar,.article{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 5px 22px #10263808}
+.sidebar{padding:19px;position:sticky;top:86px}
+.sidebar h3{color:var(--navy);font-size:15px;margin-bottom:12px}
+.chapter-list{list-style:none;display:grid;gap:6px}
+.chapter-list button{width:100%;text-align:left;border:0;background:transparent;border-radius:7px;padding:9px 10px;color:#52636e;font-size:12px;line-height:1.45}
+.chapter-list button:hover,.chapter-list button.selected{background:#edf2f5;color:var(--navy);font-weight:700}
+.chapter-list .num{display:inline-grid;place-items:center;background:#dfe8ed;color:#29465a;width:22px;height:22px;border-radius:6px;margin-right:7px;font-size:10px}
+.article{padding:clamp(20px,4vw,40px);min-height:560px}
+.article-meta{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#9a7a38;font-weight:800}
+.article h2{font-size:clamp(24px,4vw,34px);line-height:1.25;color:var(--navy);margin:8px 0 17px}
+.article h3{font-size:18px;color:var(--navy);margin:27px 0 9px}
+.article h4{font-size:14px;color:#29485c;margin:19px 0 7px}
+.article p{font-size:14px;color:#465762;margin:0 0 13px}
+.article ul,.article ol{padding-left:22px;margin:8px 0 17px;color:#465762;font-size:14px}
+.article li{margin:6px 0}
+.callout{background:#edf3f6;border-left:4px solid #42657b;padding:15px 17px;border-radius:7px;margin:18px 0;color:#344b5b;font-size:13px}
+.example{background:#f8f7f2;border:1px solid #eee8d9;padding:16px;border-radius:9px;margin:16px 0}
+.example strong{color:#795d27}
+.article-nav{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:22px;margin-top:35px}
+.article-nav button:disabled{opacity:.35;cursor:not-allowed}
+.progress{height:6px;background:#e8edf0;border-radius:20px;overflow:hidden;margin:10px 0 17px}
+.progress span{display:block;height:100%;background:var(--gold);width:0}
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:15px 0}
+.tool{border:1px solid var(--line);border-radius:9px;padding:14px}
+.tool strong{display:block;color:var(--navy);font-size:13px}
+.tool p{font-size:12px;margin:5px 0}
+.tool a{font-size:11px;color:#896a2d;font-weight:bold}
+.store-panel{background:linear-gradient(120deg,#193b52,#102638);border-radius:16px;padding:42px 25px;color:#fff;text-align:center}
+.store-panel h2{font-size:32px;margin:8px 0}
+.store-panel p{color:#d4dfe6;max-width:630px;margin:0 auto;font-size:14px}
+.store-panel .btn{margin-top:23px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.about-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:25px}
+.about-box h3{color:var(--navy);margin-bottom:9px}
+.about-box p{font-size:13px;color:var(--muted)}
+.footer{background:#091a27;color:#fff;text-align:center;padding:35px 20px}
+.footer p{font-size:11px;color:#b7c5ce;margin-top:6px}
+.search-wrap{max-width:650px;margin:0 auto 25px}
+.search-wrap input{width:100%;border:1px solid var(--line);border-radius:9px;padding:14px 16px;outline:none;background:#fff}
+.search-wrap input:focus{border-color:#9a7a38}
+.small{font-size:11px;color:var(--muted)}
+@media(max-width:900px){.category-grid{grid-template-columns:repeat(2,1fr)}.content-layout{grid-template-columns:1fr}.sidebar{position:static}.chapter-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.nav-toggle{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;background:var(--navy);padding:18px 22px;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{padding:65px 20px}.category-grid{grid-template-columns:1fr 1fr}.category-card{padding:18px 14px;min-height:225px}.chapter-list{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}section{padding:55px 17px}.article{padding:21px}.tools-grid{grid-template-columns:1fr}}
+@media(max-width:390px){.category-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav">
+    <a class="brand" href="#" onclick="showHome();return false">
+      <span class="brand-mark">▤</span>
+      <span class="brand-name">SSSC.<small>BUSINESS HUB</small></span>
+    </a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Buka menu">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#" onclick="showHome();return false">Beranda</a>
+      <a href="#kategori" onclick="showHome();closeNav()">Kategori</a>
+      <a href="#tentang" onclick="showHome();closeNav()">Tentang</a>
+      <a href="https://lynk.id/dikzdesain" target="_blank" rel="noopener">SSSC Digital Store</a>
+    </div>
+  </nav>
+</header>
+
+<main id="homePage">
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Social Central Community</div>
+      <h1>Learn Business.<br><span>Build Your Future.</span></h1>
+      <p>Ruang belajar untuk mengenal bisnis dari dasar, memahami cara kerja usaha, membangun bisnis online, serta mempelajari literasi keuangan dan teknologi digital dengan bahasa yang mudah dipahami.</p>
+      <div class="actions">
+        <a class="btn btn-gold" href="#kategori">📖 Mulai Belajar</a>
+        <a class="btn btn-outline" href="https://lynk.id/dikzdesain" target="_blank" rel="noopener">🛍 Kunjungi Toko</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="kategori">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Learning Library</div>
+        <h2>Kategori Pembelajaran</h2>
+        <p>Pilih gambar buku untuk membuka daftar bab. Setiap kategori disusun bertahap agar pembaca dapat belajar dari pengenalan sampai contoh penerapan.</p>
+      </div>
+      <div class="search-wrap"><input id="categorySearch" type="search" placeholder="Cari kategori pembelajaran..." oninput="searchCategories()"></div>
+      <div class="category-grid" id="categoryGrid">
+        <button class="category-card" data-search="business offline dasar umkm usaha toko makanan jasa" onclick="openCategory('offline')">
+          <span class="book-icon">📕</span><h3>Business Offline</h3>
+          <p>Belajar bisnis dasar, UMKM, usaha rumahan, toko, makanan, minuman, dan jasa.</p><span class="card-link">Buka buku pembelajaran →</span>
+        </button>
+        <button class="category-card" data-search="business online digital e-book produk internet marketplace" onclick="openCategory('online')">
+          <span class="book-icon">📘</span><h3>Business Online</h3>
+          <p>Memahami produk digital, e-book, toko online, pemasaran digital, dan layanan internet.</p><span class="card-link">Buka buku pembelajaran →</span>
+        </button>
+        <button class="category-card" data-search="crypto education blockchain aset digital keamanan" onclick="openCategory('crypto')">
+          <span class="book-icon">📗</span><h3>Crypto Education</h3>
+          <p>Mengenal blockchain, aset kripto, cara kerja teknologi, keamanan, dan risikonya.</p><span class="card-link">Buka buku pembelajaran →</span>
+        </button>
+        <button class="category-card" data-search="investment education investasi keuangan saham reksa dana obligasi" onclick="openCategory('investment')">
+          <span class="book-icon">📙</span><h3>Investment Education</h3>
+          <p>Belajar konsep investasi, tujuan keuangan, jenis instrumen, risiko, dan perlindungan konsumen.</p><span class="card-link">Buka buku pembelajaran →</span>
+        </button>
+      </div>
+      <div class="note"><strong>Catatan pembelajaran:</strong> Materi investasi dan aset kripto disediakan untuk menambah pengetahuan, bukan rekomendasi membeli, menjual, membuka akun, atau melakukan transaksi. Produk keuangan memiliki risiko. Selalu periksa ketentuan usia, legalitas, dan informasi resmi bersama orang tua/wali jika diperlukan.</div>
+    </div>
+  </section>
+
+  <section style="background:#eaf0f4">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">How to Learn</div><h2>Belajar Selangkah demi Selangkah</h2>
+        <p>Materi dirancang dengan urutan yang jelas supaya pembaca tidak hanya menghafal istilah, tetapi memahami alasan dan penerapannya.</p>
+      </div>
+      <div class="category-grid">
+        <div class="category-card"><span class="book-icon">01</span><h3>Pahami Konsep</h3><p>Mulai dari pengertian, tujuan, istilah penting, dan cara kerja suatu bidang.</p></div>
+        <div class="category-card"><span class="book-icon">02</span><h3>Lihat Contoh</h3><p>Pelajari contoh kasus sehari-hari agar konsep lebih mudah dibayangkan.</p></div>
+        <div class="category-card"><span class="book-icon">03</span><h3>Pelajari Proses</h3><p>Kenali tahapan, perencanaan, pencatatan, dan hal yang perlu diperhatikan.</p></div>
+        <div class="category-card"><span class="book-icon">04</span><h3>Evaluasi</h3><p>Gunakan pertanyaan refleksi untuk memeriksa pemahaman setelah membaca.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tentang">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">About SSSC</div><h2>Social Central Community</h2><p>Learn • Build • Grow</p></div>
+      <div class="about-grid">
+        <div class="about-box"><h3>Tujuan Kami</h3><p>SSSC Business Hub dibuat sebagai ruang edukasi yang membantu masyarakat mengenal dasar-dasar usaha, memahami perkembangan bisnis digital, dan membangun kebiasaan mencari informasi yang tepat sebelum mengambil keputusan.</p></div>
+        <div class="about-box"><h3>Belajar dengan Bijak</h3><p>Setiap materi merupakan pengantar pengetahuan. Contoh angka hanya ilustrasi. Kondisi usaha nyata dapat berbeda menurut lokasi, kebutuhan pelanggan, biaya, aturan, dan kemampuan masing-masing orang.</p></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="store-panel">
+        <div class="eyebrow">SSSC Digital Store</div>
+        <h2>Explore Digital Products</h2>
+        <p>Kunjungi toko DIKZ DESAIN untuk melihat produk digital, e-book, panduan, dan layanan desain yang tersedia.</p>
+        <a class="btn btn-gold" href="https://lynk.id/dikzdesain" target="_blank" rel="noopener">🛍 Ke Toko DIKZ DESAIN ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="categoryPage" class="page">
+  <div class="page-top"><div class="wrap">
+    <div><div class="eyebrow">SSSC Learning Library</div><h1 id="categoryTitle">Kategori</h1><p id="categoryDescription"></p></div>
+    <button class="back-btn" onclick="showHome()">← Kembali ke Beranda</button>
+  </div></div>
+  <section><div class="wrap content-layout">
+    <aside class="sidebar">
+      <h3>Daftar Isi Pembelajaran</h3>
+      <div class="progress"><span id="progressBar"></span></div>
+      <p class="small" id="chapterCount"></p>
+      <ul class="chapter-list" id="chapterList"></ul>
+    </aside>
+    <article class="article">
+      <div id="articleContent"></div>
+      <div class="article-nav">
+        <button class="btn btn-light" id="prevBtn" onclick="changeChapter(-1)">← Sebelumnya</button>
+        <button class="btn btn-dark" id="nextBtn" onclick="changeChapter(1)">Selanjutnya →</button>
+      </div>
+    </article>
+  </div></section>
+</main>
+
+<section id="storePage" class="page">
+  <div class="page-top"><div class="wrap"><div><div class="eyebrow">SSSC Digital Store</div><h1>Toko Produk Digital</h1><p>Produk dan layanan kreatif dari DIKZ DESAIN.</p></div><button class="back-btn" onclick="showHome()">← Beranda</button></div></div>
+  <section><div class="wrap"><div class="store-panel"><h2>DIKZ DESAIN</h2><p>Jelajahi katalog produk digital, e-book, dan layanan desain melalui halaman toko.</p><a class="btn btn-gold" href="https://lynk.id/dikzdesain" target="_blank" rel="noopener">Buka Lynk.id ↗</a></div></div></section>
+</section>
+
+<footer class="footer">
+  <div class="brand-name">SSSC<span style="color:#d8b66c">.</span><small>BUSINESS HUB</small></div>
+  <p>Social Central Community — Learn • Build • Grow</p>
+  <p>Materi edukasi umum. Periksa informasi dan aturan terbaru dari sumber resmi.</p>
+  <p>© <span id="year"></span> SSSC Business Hub.</p>
+</footer>
+
+<script>
+const CATEGORIES = {
+offline:{
+ title:"Business Offline — Bisnis Dasar dan UMKM",
+ desc:"Belajar membangun dan mengelola usaha yang berhubungan langsung dengan pelanggan, mulai dari ide, perencanaan, modal, operasional, hingga evaluasi.",
+ chapters:[
+ {title:"Mengenal Dunia Bisnis",body:`
+ <p>Bisnis adalah kegiatan terencana untuk menyediakan barang atau jasa yang dibutuhkan orang lain. Dalam kegiatan tersebut, pelaku usaha mengatur sumber daya seperti waktu, tenaga, bahan, alat, keterampilan, dan uang. Tujuannya bukan hanya memperoleh pendapatan, tetapi juga memberikan manfaat kepada pelanggan.</p>
+ <h3>1. Apa yang dimaksud kegiatan bisnis?</h3><p>Ketika seseorang membuat makanan lalu menjualnya, membuka jasa potong rambut, menjahit pakaian, atau menyediakan kebutuhan harian di warung, orang tersebut sedang menjalankan kegiatan bisnis. Ada kebutuhan pelanggan yang dipenuhi melalui produk atau jasa.</p>
+ <h3>2. Unsur penting dalam bisnis</h3><ul><li><b>Produk atau jasa:</b> sesuatu yang ditawarkan kepada pelanggan.</li><li><b>Pelanggan:</b> orang atau kelompok yang memiliki kebutuhan.</li><li><b>Nilai:</b> manfaat yang dirasakan pelanggan setelah membeli atau menggunakan layanan.</li><li><b>Biaya:</b> pengeluaran untuk menghasilkan dan menjual produk.</li><li><b>Pendapatan:</b> uang yang diterima dari penjualan.</li><li><b>Pengelolaan:</b> cara mengatur kegiatan agar usaha berjalan tertib.</li></ul>
+ <h3>3. Bagaimana bisnis bekerja?</h3><p>Secara sederhana, pelaku usaha mengenali kebutuhan, menyiapkan produk, menentukan harga, menawarkan produk, melayani pembeli, menerima pembayaran, mencatat transaksi, lalu mengevaluasi hasilnya. Proses ini berlangsung berulang dan perlu diperbaiki berdasarkan pengalaman.</p>
+ <div class="example"><strong>Contoh sederhana:</strong><p>Seseorang melihat warga sekitar membutuhkan sarapan. Ia menyiapkan nasi bungkus, menghitung biaya bahan dan kemasan, menentukan harga yang wajar, lalu menawarkan kepada calon pembeli. Setelah penjualan, ia mencatat jumlah produk terjual dan biaya yang dikeluarkan.</p></div>
+ <h3>4. Pendapatan tidak sama dengan keuntungan</h3><p>Pendapatan adalah seluruh uang yang diterima dari penjualan. Keuntungan baru dapat dihitung setelah biaya usaha dikurangi. Jika penjualan Rp300.000 dan seluruh biaya Rp220.000, selisih Rp80.000 merupakan keuntungan sebelum memperhitungkan biaya lain yang belum tercatat.</p>
+ <div class="callout">Ingat: usaha yang terlihat ramai belum tentu untung. Catatan biaya dan pemasukan diperlukan agar kondisi usaha dapat diketahui dengan benar.</div>
+ <h3>5. Pertanyaan refleksi</h3><ol><li>Kebutuhan apa yang ingin dipenuhi oleh sebuah usaha?</li><li>Apa perbedaan pendapatan dan keuntungan?</li><li>Mengapa pencatatan penting bagi pemilik usaha?</li></ol>`},
+ {title:"Mengenal UMKM dan Jenis Usaha",body:`
+ <p>UMKM adalah singkatan dari Usaha Mikro, Kecil, dan Menengah. Istilah ini digunakan untuk mengelompokkan usaha berdasarkan kriteria yang ditetapkan dalam peraturan Indonesia. UMKM dapat bergerak di bidang perdagangan, makanan dan minuman, pertanian, kerajinan, produksi, maupun jasa.</p>
+ <h3>1. Contoh kegiatan UMKM</h3><ul><li>Warung sembako yang menjual kebutuhan harian.</li><li>Usaha makanan rumahan seperti kue, katering, atau makanan ringan.</li><li>Usaha pakaian, kerajinan, dan aksesori.</li><li>Jasa jahit, servis, desain, fotografi, atau kebersihan.</li><li>Produsen lokal yang membuat barang untuk dijual kembali atau langsung kepada konsumen.</li></ul>
+ <h3>2. Perbedaan barang dan jasa</h3><p>Barang merupakan produk yang dapat dimiliki, misalnya roti, pakaian, atau kerajinan. Jasa merupakan layanan atau keterampilan yang diberikan, misalnya memperbaiki sepeda motor, memotong rambut, atau membuat desain. Ada pula usaha yang menggabungkan barang dan jasa.</p>
+ <h3>3. Mengapa UMKM penting?</h3><p>UMKM dapat menyediakan barang dan layanan yang dekat dengan kebutuhan masyarakat, membuka kesempatan kerja, menggerakkan kegiatan ekonomi lokal, serta memberi ruang bagi masyarakat untuk mengembangkan keterampilan dan kemandirian usaha.</p>
+ <h3>4. Memahami pelanggan sekitar</h3><p>Usaha kecil dapat dimulai dengan mengamati lingkungan: produk apa yang sering dicari, kapan orang membutuhkannya, berapa kisaran harga yang dapat diterima, dan apakah sudah banyak penjual serupa. Pengamatan sederhana membantu mengurangi keputusan yang hanya berdasarkan perkiraan.</p>
+ <div class="example"><strong>Contoh:</strong><p>Di sekitar sekolah atau permukiman terdapat banyak orang yang membutuhkan makanan praktis. Calon pelaku usaha dapat meneliti pilihan menu, waktu pembelian, kebersihan, kemasan, dan harga yang sesuai. Ini belum menjamin usaha berhasil, tetapi memberi dasar untuk membuat rencana.</p></div>
+ <h3>5. Legalitas dan aturan</h3><p>Usaha perlu memperhatikan ketentuan yang berlaku, termasuk perizinan sesuai jenis dan skala kegiatan, keamanan produk, label, pajak, serta aturan khusus untuk makanan atau produk tertentu. Persyaratan dapat berubah; periksa informasi dari instansi pemerintah resmi atau pendamping UMKM.</p>
+ <h3>Latihan</h3><ol><li>Sebutkan tiga contoh UMKM di lingkunganmu.</li><li>Apakah usaha tersebut menjual barang, jasa, atau keduanya?</li><li>Kebutuhan pelanggan apa yang dipenuhi?</li></ol>`},
+ {title:"Menemukan Ide dan Peluang Usaha",body:`
+ <p>Ide usaha adalah gagasan mengenai barang atau jasa yang mungkin ditawarkan kepada pelanggan. Ide yang baik bukan hanya sesuatu yang disukai pemiliknya, tetapi juga perlu memiliki calon pembeli, dapat dijalankan dengan sumber daya yang tersedia, dan memberikan manfaat yang jelas.</p>
+ <h3>1. Mulai dari masalah dan kebutuhan</h3><p>Perhatikan kesulitan yang dialami orang di sekitar. Apakah mereka kesulitan mendapatkan makanan pada waktu tertentu? Apakah ada kebutuhan jasa perbaikan, jahit, antar barang, atau desain? Masalah yang nyata dapat menjadi petunjuk peluang usaha.</p>
+ <h3>2. Kenali kemampuan dan sumber daya</h3><p>Catat keterampilan, alat, waktu, bahan, tempat, serta bantuan yang mungkin tersedia. Seseorang yang pandai memasak dapat mempertimbangkan produk makanan. Orang yang memiliki keterampilan memperbaiki barang dapat mempelajari peluang jasa servis. Jangan memilih ide hanya karena sedang populer jika belum memahami cara menjalankannya.</p>
+ <h3>3. Amati calon pelanggan</h3><ul><li>Siapa yang kemungkinan membutuhkan produk?</li><li>Masalah apa yang ingin mereka selesaikan?</li><li>Seberapa sering kebutuhan itu muncul?</li><li>Bagaimana mereka memenuhi kebutuhan saat ini?</li><li>Hal apa yang membuat mereka memilih satu penjual dibanding penjual lain?</li></ul>
+ <h3>4. Amati pesaing dengan sehat</h3><p>Pesaing adalah usaha lain yang menawarkan produk atau layanan sejenis. Amati jenis produk, mutu, pelayanan, kemasan, lokasi, dan kisaran harga. Tujuannya bukan meniru secara mentah, melainkan menemukan cara memberikan nilai yang berbeda atau pelayanan yang lebih sesuai.</p>
+ <h3>5. Uji ide dalam skala kecil</h3><p>Sebelum mengeluarkan banyak biaya, mintalah pendapat calon pelanggan, buat contoh produk, atau lakukan uji coba terbatas dengan izin dan perencanaan yang sesuai. Catat tanggapan tentang kualitas, ukuran, kemasan, harga, dan kemudahan pembelian.</p>
+ <div class="example"><strong>Contoh penilaian ide:</strong><p>Ide menjual minuman dingin dapat dinilai dari kebutuhan di lingkungan, ketersediaan bahan, kemampuan menjaga kebersihan, persaingan, biaya, dan kemungkinan produk tidak habis terjual. Semua faktor tersebut perlu dipertimbangkan sebelum memutuskan.</p></div>
+ <h3>6. Buat kesimpulan peluang</h3><p>Bandingkan beberapa ide, bukan hanya satu. Pilih ide yang paling masuk akal berdasarkan kebutuhan pelanggan, kemampuan, biaya, risiko, dan aturan yang berlaku.</p>
+ <h3>Latihan</h3><ol><li>Tuliskan tiga masalah di lingkungan yang mungkin membutuhkan solusi.</li><li>Pasangkan setiap masalah dengan ide produk atau jasa.</li><li>Sebutkan cara sederhana untuk menguji salah satu ide tersebut.</li></ol>`},
+ {title:"Membuat Rencana Usaha Sederhana",body:`
+ <p>Rencana usaha adalah catatan yang menjelaskan apa yang akan dijual, siapa calon pelanggannya, bagaimana kegiatan dijalankan, apa saja kebutuhan dan biayanya, serta bagaimana hasilnya akan dievaluasi. Rencana tidak harus rumit, tetapi harus realistis dan dapat diperiksa kembali.</p>
+ <h3>1. Tentukan produk dan manfaat</h3><p>Jelaskan produk secara spesifik. Hindari keterangan terlalu umum. Misalnya, bukan hanya “menjual makanan”, tetapi “menjual roti isi untuk sarapan dengan pilihan rasa tertentu”. Jelaskan manfaat yang diterima pembeli.</p>
+ <h3>2. Tentukan target pelanggan</h3><p>Target pelanggan adalah kelompok yang paling mungkin membutuhkan produk. Pertimbangkan lokasi, kebiasaan, kebutuhan, daya beli, dan waktu mereka berbelanja. Tidak semua orang harus menjadi target utama.</p>
+ <h3>3. Tentukan cara penjualan</h3><p>Penjualan dapat dilakukan dari rumah, kios, bazar, titip jual, pesanan, atau kombinasi beberapa cara. Pilih cara yang sesuai dengan produk, biaya, aturan lokasi, dan kemampuan melayani pelanggan.</p>
+ <h3>4. Susun kebutuhan operasional</h3><ul><li>Bahan baku atau barang dagangan.</li><li>Peralatan dan perlengkapan.</li><li>Tempat penyimpanan atau tempat kerja.</li><li>Kemasan dan label bila diperlukan.</li><li>Transportasi dan komunikasi.</li><li>Waktu kerja dan pembagian tugas.</li></ul>
+ <h3>5. Perkirakan penjualan secara hati-hati</h3><p>Perkiraan penjualan sebaiknya didasarkan pada pengamatan dan uji coba, bukan harapan semata. Buat skenario penjualan rendah, sedang, dan tinggi. Perhatikan bahwa barang dapat tidak laku, rusak, atau membutuhkan biaya tambahan.</p>
+ <div class="callout">Rencana usaha adalah alat bantu mengambil keputusan, bukan jaminan keberhasilan. Perbarui rencana saat memperoleh data baru.</div>
+ <h3>6. Format rencana satu halaman</h3><ol><li>Nama dan jenis usaha.</li><li>Produk atau jasa yang ditawarkan.</li><li>Masalah pelanggan yang ingin diselesaikan.</li><li>Target pelanggan dan lokasi.</li><li>Cara promosi dan penjualan.</li><li>Daftar kebutuhan serta perkiraan biaya.</li><li>Risiko utama dan cara menguranginya.</li><li>Target evaluasi setelah uji coba.</li></ol>`},
+ {title:"Menentukan Modal Awal dan Mengelola Uang",body:`
+ <p>Modal awal adalah sumber daya yang disiapkan untuk memulai kegiatan usaha. Modal tidak selalu hanya berupa uang. Keterampilan, waktu, peralatan yang sudah dimiliki, tempat, dan jaringan juga dapat membantu usaha. Namun, semua kebutuhan tetap perlu dihitung agar tidak salah memperkirakan biaya.</p>
+ <h3>1. Kelompokkan kebutuhan modal</h3><ul><li><b>Peralatan:</b> alat yang dapat digunakan berulang, misalnya kompor, etalase, atau mesin.</li><li><b>Bahan awal:</b> bahan baku atau stok pertama.</li><li><b>Perlengkapan:</b> kemasan, alat tulis, label, dan perlengkapan kecil.</li><li><b>Biaya tempat:</b> sewa atau penataan tempat jika diperlukan.</li><li><b>Biaya operasional:</b> listrik, air, transportasi, komunikasi, dan biaya rutin lain.</li><li><b>Dana cadangan:</b> penyangga untuk pengeluaran tak terduga yang wajar.</li></ul>
+ <h3>2. Bedakan biaya awal dan biaya rutin</h3><p>Biaya awal biasanya dikeluarkan sebelum atau saat usaha dimulai. Biaya rutin muncul selama usaha berjalan, misalnya pembelian bahan, listrik, ongkos kirim, dan perawatan. Memisahkan keduanya membantu pemilik usaha memahami kebutuhan uang setiap periode.</p>
+ <h3>3. Contoh perhitungan sederhana</h3><div class="example"><strong>Ilustrasi, bukan patokan harga:</strong><p>Peralatan Rp400.000 + bahan awal Rp250.000 + kemasan Rp75.000 + kebutuhan operasional awal Rp75.000 = kebutuhan awal Rp800.000. Angka sebenarnya bergantung pada lokasi, skala, dan jenis usaha.</p></div>
+ <h3>4. Pisahkan uang pribadi dan uang usaha</h3><p>Catat uang yang masuk dan keluar untuk kegiatan usaha secara terpisah dari pengeluaran pribadi. Jika semuanya tercampur, pemilik usaha akan kesulitan mengetahui apakah usaha menghasilkan keuntungan atau justru menggunakan uang pribadi untuk menutup biaya.</p>
+ <h3>5. Buat catatan kas</h3><p>Catat tanggal, keterangan, uang masuk, uang keluar, dan saldo. Simpan bukti pembelian penting. Lakukan pemeriksaan berkala agar catatan sesuai dengan uang atau stok yang tersedia.</p>
+ <h3>6. Hindari keputusan terburu-buru</h3><p>Jangan menggunakan seluruh uang yang tersedia tanpa mempertimbangkan kebutuhan rumah tangga, kewajiban, risiko, dan kemungkinan penjualan lebih rendah dari perkiraan. Pinjaman juga menimbulkan kewajiban pembayaran sehingga perlu dipahami dengan cermat.</p>
+ <h3>Latihan</h3><ol><li>Buat daftar lima kebutuhan untuk ide usaha pilihanmu.</li><li>Kelompokkan menjadi peralatan, bahan, dan operasional.</li><li>Jelaskan bagaimana kamu akan mencatat uang usaha.</li></ol>`},
+ {title:"Menghitung Biaya Produksi dan Harga Jual",body:`
+ <p>Harga jual perlu ditentukan dengan memahami biaya yang dikeluarkan, nilai produk, harga pasar, dan kemampuan pelanggan. Harga yang terlalu rendah dapat membuat usaha merugi, sedangkan harga terlalu tinggi tanpa alasan yang jelas dapat membuat pelanggan memilih produk lain.</p>
+ <h3>1. Kenali biaya produksi</h3><p>Biaya produksi adalah biaya untuk menghasilkan produk. Pada usaha makanan, misalnya, biaya dapat meliputi bahan utama, bumbu, minyak, gas yang digunakan, dan kemasan. Biaya tenaga kerja serta penyusutan alat juga perlu dipertimbangkan dalam perhitungan yang lebih lengkap.</p>
+ <h3>2. Bedakan biaya tetap dan variabel</h3><ul><li><b>Biaya tetap:</b> biaya yang relatif tidak berubah dalam rentang kegiatan tertentu, misalnya sewa bulanan.</li><li><b>Biaya variabel:</b> biaya yang berubah mengikuti jumlah produksi, misalnya bahan baku dan kemasan.</li></ul>
+ <h3>3. Hitung total biaya</h3><p>Total biaya adalah gabungan biaya yang relevan untuk periode atau jumlah produksi tertentu. Jangan lupa biaya kecil yang sering terlewat, seperti transportasi, biaya layanan, listrik, atau barang yang rusak.</p>
+ <div class="example"><strong>Contoh ilustrasi:</strong><p>Untuk membuat 20 porsi, bahan Rp100.000, kemasan Rp20.000, dan biaya lain yang dialokasikan Rp20.000. Total biaya Rp140.000. Biaya rata-rata per porsi = Rp140.000 ÷ 20 = Rp7.000.</p></div>
+ <h3>4. Menentukan harga jual</h3><p>Harga jual harus mempertimbangkan biaya per unit, target keuntungan, harga pesaing, kualitas, dan nilai yang diterima pelanggan. Misalnya, jika biaya rata-rata Rp7.000, pemilik usaha dapat mengevaluasi beberapa pilihan harga. Angka harga akhir tidak boleh ditentukan hanya dengan menambahkan persentase tanpa memahami kondisi pasar.</p>
+ <h3>5. Menghitung keuntungan</h3><p>Keuntungan sederhana = pendapatan penjualan − seluruh biaya. Jika 20 porsi terjual dengan harga Rp9.000, pendapatan Rp180.000. Jika biaya total Rp140.000, selisihnya Rp40.000 sebelum biaya lain yang belum dimasukkan. Jika ada produk tidak terjual, rusak, diskon, atau biaya tambahan, hasil akhirnya berubah.</p>
+ <h3>6. Evaluasi harga</h3><p>Periksa apakah harga menutup biaya, apakah pelanggan memahami nilai produk, apakah kualitas konsisten, dan apakah penjualan cukup untuk menjaga usaha. Catat perubahan harga bahan agar perhitungan diperbarui.</p>
+ <div class="callout">Contoh angka hanya untuk latihan. Harga nyata harus dihitung berdasarkan bukti pembelian, biaya lokal, ukuran produk, dan kondisi usaha.</div>`},
+ {title:"Mengelola Stok, Kualitas, dan Operasional",body:`
+ <p>Operasional adalah kegiatan sehari-hari yang membuat usaha berjalan. Pengelolaan stok, kebersihan, kualitas, jadwal, dan pelayanan saling berhubungan. Kesalahan kecil yang berulang dapat menambah biaya atau menurunkan kepercayaan pelanggan.</p>
+ <h3>1. Apa itu stok?</h3><p>Stok adalah persediaan bahan baku atau barang yang akan digunakan atau dijual. Stok terlalu sedikit dapat membuat pesanan tidak terpenuhi. Stok terlalu banyak dapat mengikat uang, memenuhi ruang, atau rusak sebelum terjual.</p>
+ <h3>2. Catat barang masuk dan keluar</h3><p>Gunakan buku atau lembar kerja yang mencatat nama barang, tanggal, jumlah masuk, jumlah keluar, dan sisa. Cocokkan catatan dengan persediaan fisik secara berkala.</p>
+ <h3>3. Perhatikan masa simpan dan kualitas</h3><p>Untuk produk yang memiliki masa kedaluwarsa, atur penyimpanan dan penggunaan berdasarkan ketentuan keamanan produk. Jangan menjual barang yang kondisinya tidak layak. Untuk makanan, kebersihan bahan, alat, tempat, dan orang yang mengolah harus diperhatikan.</p>
+ <h3>4. Buat standar kerja</h3><p>Tuliskan langkah utama dalam menerima pesanan, menyiapkan produk, memeriksa kualitas, mengemas, menyerahkan barang, dan menangani keluhan. Standar sederhana membantu menjaga hasil tetap konsisten walaupun pekerjaan dilakukan lebih dari satu orang.</p>
+ <h3>5. Periksa pemasok</h3><p>Pemasok adalah pihak yang menyediakan bahan atau barang. Pertimbangkan kualitas, konsistensi, ketepatan pengiriman, harga, dan kejelasan transaksi. Jangan hanya memilih harga termurah jika kualitas atau keamanannya tidak sesuai.</p>
+ <h3>6. Evaluasi stok</h3><ul><li>Barang apa yang paling sering terjual?</li><li>Barang apa yang lambat bergerak?</li><li>Apakah ada barang rusak atau kedaluwarsa?</li><li>Apakah jumlah pembelian sesuai kebutuhan?</li></ul>`},
+ {title:"Pemasaran dan Pelayanan Pelanggan",body:`
+ <p>Pemasaran adalah kegiatan mengenali kebutuhan pelanggan, menyampaikan manfaat produk, dan membangun hubungan agar orang dapat membuat keputusan pembelian secara sadar. Pemasaran bukan hanya memasang iklan; kualitas produk dan pengalaman pelanggan juga bagian penting.</p>
+ <h3>1. Kenali alasan pelanggan membeli</h3><p>Pelanggan dapat memilih produk karena rasa, mutu, harga, lokasi, kemudahan, kecepatan, desain, atau pelayanan. Cari tahu alasan yang benar melalui pertanyaan dan tanggapan, bukan sekadar menebak.</p>
+ <h3>2. Sampaikan informasi dengan jujur</h3><p>Jelaskan nama produk, ukuran, bahan atau komposisi yang relevan, harga, cara penggunaan, dan batasan layanan. Hindari klaim berlebihan, foto yang menyesatkan, atau janji yang tidak dapat dipenuhi.</p>
+ <h3>3. Cara promosi offline</h3><ul><li>Papan nama atau spanduk yang jelas dan sesuai aturan tempat.</li><li>Brosur atau katalog sederhana.</li><li>Partisipasi dalam bazar atau kegiatan masyarakat.</li><li>Rekomendasi pelanggan yang diberikan secara sukarela.</li><li>Kerja sama dengan usaha lain yang saling melengkapi.</li></ul>
+ <h3>4. Pelayanan pelanggan</h3><p>Sambut pelanggan dengan sopan, dengarkan kebutuhan, berikan informasi yang tepat, dan tangani keluhan tanpa menyalahkan. Jika terjadi kesalahan, jelaskan solusi yang dapat dilakukan dan tindak lanjuti sesuai kesepakatan.</p>
+ <h3>5. Bangun kepercayaan</h3><p>Kepercayaan tumbuh dari kualitas yang konsisten, harga yang jelas, ketepatan janji, kebersihan, komunikasi, dan tanggung jawab setelah penjualan. Kepercayaan tidak dapat dibangun hanya melalui promosi.</p>
+ <div class="example"><strong>Contoh:</strong><p>Jika pelanggan menerima pesanan yang tidak sesuai, pemilik usaha dapat memeriksa bukti pesanan, meminta maaf bila memang terjadi kesalahan, lalu menawarkan penyelesaian yang wajar sesuai kebijakan usaha.</p></div>`},
+ {title:"Mencatat Penjualan dan Mengevaluasi Usaha",body:`
+ <p>Pencatatan membantu pemilik usaha mengetahui kondisi sebenarnya. Ingatan saja sering tidak cukup, terutama jika transaksi terjadi setiap hari. Catatan sederhana dapat menunjukkan produk yang laku, biaya yang meningkat, dan waktu penjualan yang ramai.</p>
+ <h3>1. Catatan penjualan</h3><p>Catat tanggal, nama produk, jumlah, harga satuan, total, metode pembayaran, dan keterangan bila diperlukan. Simpan bukti transaksi yang penting dengan aman.</p>
+ <h3>2. Catatan pengeluaran</h3><p>Catat pembelian bahan, kemasan, transportasi, biaya tempat, biaya layanan, perawatan alat, dan pengeluaran lainnya. Pisahkan pengeluaran usaha dan pribadi.</p>
+ <h3>3. Periksa hasil usaha</h3><p>Bandingkan pendapatan dengan seluruh biaya pada periode yang sama. Perhatikan juga stok, utang usaha, piutang pelanggan, dan uang yang masih harus dibayarkan. Uang yang ada di kas belum tentu seluruhnya merupakan keuntungan yang bebas digunakan.</p>
+ <h3>4. Gunakan ukuran sederhana</h3><ul><li>Jumlah produk terjual.</li><li>Total pendapatan.</li><li>Total biaya.</li><li>Produk yang paling diminati.</li><li>Jumlah keluhan atau pengembalian.</li><li>Jumlah stok rusak atau tidak terjual.</li></ul>
+ <h3>5. Ambil keputusan berdasarkan catatan</h3><p>Jika penjualan turun, cari penyebabnya sebelum mengubah harga atau membeli lebih banyak stok. Jika biaya meningkat, periksa sumber kenaikannya. Jika pelanggan sering memberi masukan yang sama, pertimbangkan perbaikan produk atau layanan.</p>
+ <div class="callout">Evaluasi bukan mencari siapa yang salah. Evaluasi bertujuan mengetahui apa yang berjalan baik, apa yang perlu diperbaiki, dan tindakan apa yang masuk akal.</div>`},
+ {title:"Studi Kasus dan Rangkuman UMKM",body:`
+ <p>Studi kasus membantu menghubungkan teori dengan situasi sehari-hari. Contoh berikut merupakan ilustrasi untuk latihan, bukan janji bahwa hasil usaha nyata akan sama.</p>
+ <h3>Studi kasus: usaha camilan rumahan</h3><p>Seseorang ingin menjual camilan kepada warga sekitar. Sebelum mulai, ia mengamati kebutuhan calon pelanggan, membandingkan produk sejenis, menguji resep dalam jumlah kecil, lalu meminta pendapat tentang rasa, ukuran, dan kemasan.</p>
+ <h3>Tahap perencanaan</h3><ol><li>Menentukan jenis camilan dan manfaatnya.</li><li>Menentukan calon pembeli dan cara menerima pesanan.</li><li>Mencatat bahan, kemasan, alat, serta biaya operasional.</li><li>Menghitung biaya per kemasan.</li><li>Menentukan harga dengan mempertimbangkan biaya dan kondisi pasar.</li><li>Membuat informasi produk yang jujur.</li><li>Mencatat pesanan, penjualan, stok, dan keluhan.</li></ol>
+ <h3>Hal yang dapat menjadi masalah</h3><ul><li>Bahan baku berubah harga.</li><li>Produk tidak habis terjual.</li><li>Kualitas tidak konsisten.</li><li>Kemasan kurang sesuai.</li><li>Pesanan melebihi kemampuan produksi.</li><li>Catatan uang dan stok tidak cocok.</li></ul>
+ <h3>Rangkuman Business Offline</h3><p>Usaha yang sehat dimulai dengan memahami kebutuhan pelanggan, memilih ide yang masuk akal, menyusun rencana, menghitung modal dan biaya, menjaga kualitas, melayani pelanggan, mencatat transaksi, serta mengevaluasi hasil. Tidak semua usaha harus langsung besar. Uji coba yang terukur dan pembelajaran dari pengalaman dapat membantu pemilik usaha membuat keputusan lebih baik.</p>
+ <h3>Pertanyaan evaluasi</h3><ol><li>Apa perbedaan produk dan jasa?</li><li>Mengapa ide usaha perlu diuji?</li><li>Apa saja contoh biaya awal?</li><li>Bagaimana menghitung biaya rata-rata per produk?</li><li>Mengapa uang pribadi dan uang usaha sebaiknya dipisahkan?</li><li>Apa manfaat catatan stok dan penjualan?</li></ol>`}
+ ]},
+online:{
+ title:"Business Online — Bisnis Berbasis Internet",
+ desc:"Memahami cara menawarkan barang, jasa, dan produk digital melalui internet, termasuk persiapan, pembuatan produk, pemasaran, pelayanan, dan evaluasi.",
+ chapters:[
+ {title:"Mengenal Bisnis Online",body:`<p>Bisnis online adalah kegiatan usaha yang menggunakan internet sebagai salah satu sarana penting untuk memperkenalkan produk, menerima pertanyaan atau pesanan, berkomunikasi dengan pelanggan, dan mengelola penjualan. Produk yang dijual dapat berupa barang fisik, jasa, maupun file digital.</p><h3>1. Bentuk bisnis online</h3><ul><li>Menjual barang fisik melalui marketplace atau media sosial.</li><li>Menawarkan jasa desain, penulisan, penerjemahan, atau keterampilan lain.</li><li>Menjual produk digital seperti e-book, template, lembar kerja, atau materi belajar buatan sendiri.</li><li>Membuat konten edukasi atau informasi yang mendukung usaha.</li></ul><h3>2. Cara kerja secara umum</h3><p>Penjual menentukan produk dan target pelanggan, menyiapkan informasi dan materi promosi, menampilkan produk pada kanal digital, menjawab pertanyaan, memproses pesanan melalui sistem yang tersedia, menyerahkan produk atau layanan, lalu menangani dukungan pelanggan.</p><h3>3. Keunggulan dan tantangan</h3><p>Internet dapat membantu menjangkau pelanggan di luar lingkungan sekitar dan memudahkan penyampaian informasi. Namun, bisnis online juga memiliki tantangan: persaingan, biaya platform, perubahan algoritma, keamanan akun, penipuan, pengiriman, dan kebutuhan menjaga kepercayaan.</p><div class="callout">Memiliki akun media sosial tidak otomatis berarti memiliki bisnis yang siap berjalan. Produk, pelanggan, biaya, pelayanan, dan proses pemenuhan pesanan tetap harus direncanakan.</div><h3>4. Mulai dari kebutuhan pelanggan</h3><p>Jangan hanya memilih produk karena terlihat sedang tren. Cari tahu siapa yang membutuhkan, masalah apa yang diselesaikan, apa manfaat produk, dan bagaimana pelanggan akan menggunakannya.</p>`},
+ {title:"Memilih Model Bisnis Online",body:`<p>Model bisnis menjelaskan bagaimana usaha menciptakan manfaat, menyampaikan produk, dan memperoleh pendapatan. Model yang dipilih harus sesuai dengan kemampuan, aturan platform, kebutuhan pelanggan, dan biaya.</p><h3>1. Menjual barang fisik</h3><p>Penjual menyediakan barang yang perlu disimpan, dikemas, dan dikirim atau diserahkan. Hal yang perlu diatur meliputi stok, kualitas, foto, deskripsi, pengemasan, pengiriman, dan pengembalian sesuai kebijakan.</p><h3>2. Menawarkan jasa</h3><p>Contohnya jasa desain poster, pembuatan logo, penyuntingan dokumen, atau konsultasi sesuai kompetensi. Penjual perlu menjelaskan ruang lingkup pekerjaan, hasil yang diterima, waktu pengerjaan, jumlah revisi, dan cara komunikasi.</p><h3>3. Menjual produk digital</h3><p>Produk digital adalah produk yang diserahkan dalam bentuk file atau akses digital, misalnya e-book, template, desain siap edit, atau materi pembelajaran. Produk harus dibuat sendiri atau digunakan dengan izin/lisensi yang sesuai.</p><h3>4. Konten dan komunitas</h3><p>Konten dapat membantu membangun kepercayaan dan menjelaskan manfaat produk. Komunitas dapat menjadi tempat diskusi dan dukungan, tetapi harus dikelola dengan aturan yang jelas dan menghormati privasi anggota.</p><h3>5. Bandingkan model sebelum memilih</h3><ul><li>Berapa biaya untuk memulai?</li><li>Keahlian apa yang diperlukan?</li><li>Apakah ada stok atau pengiriman?</li><li>Bagaimana kualitas diperiksa?</li><li>Bagaimana pelanggan menerima produk?</li><li>Apakah model tersebut sesuai aturan dan usia pengguna?</li></ul>`},
+ {title:"Riset Pasar dan Menentukan Produk",body:`<p>Riset pasar adalah proses mengumpulkan informasi tentang calon pelanggan, kebutuhan, pilihan yang sudah tersedia, dan kondisi persaingan. Riset sederhana dapat dilakukan dengan mengamati pertanyaan yang sering muncul, membaca ulasan publik, atau meminta pendapat secara sopan.</p><h3>1. Buat gambaran calon pelanggan</h3><p>Jelaskan kebutuhan, kebiasaan, masalah, dan situasi calon pelanggan. Hindari mengumpulkan data pribadi yang tidak diperlukan. Untuk survei, jelaskan tujuan dan minta persetujuan.</p><h3>2. Temukan masalah yang ingin dibantu</h3><p>Contoh: pelajar membutuhkan format catatan yang rapi; pemilik usaha kecil membutuhkan desain promosi; pembaca pemula membutuhkan panduan pengantar. Masalah tersebut dapat mengarahkan ide produk.</p><h3>3. Pelajari produk sejenis</h3><p>Periksa fitur, kualitas, kejelasan deskripsi, harga yang ditampilkan, ulasan, dan pertanyaan pelanggan. Gunakan informasi tersebut untuk memahami standar pasar, bukan menyalin karya atau identitas orang lain.</p><h3>4. Uji contoh produk</h3><p>Buat versi awal yang sederhana, minta masukan, lalu perbaiki. Pastikan file dapat dibuka, instruksi jelas, dan isi sesuai deskripsi. Jangan menjual sesuatu yang belum siap atau menjanjikan hasil yang tidak dapat dikendalikan.</p><h3>5. Periksa hak cipta dan lisensi</h3><p>Gunakan karya sendiri atau materi yang izin penggunaannya jelas. Foto, font, ilustrasi, musik, dan template dapat memiliki lisensi berbeda. Jangan menganggap semua yang ditemukan di internet bebas digunakan.</p>`},
+ {title:"Membuat Produk Digital dan E-book",body:`<p>Produk digital adalah hasil karya atau informasi yang disampaikan melalui file atau akses digital. Produk yang baik membantu pengguna menyelesaikan kebutuhan tertentu dan disusun agar mudah dipahami.</p><h3>1. Tentukan tujuan produk</h3><p>Tentukan siapa pembacanya, pengetahuan awal mereka, dan hal apa yang akan mereka pahami setelah menggunakan produk. Tujuan yang jelas membantu menentukan isi dan tingkat kedalaman.</p><h3>2. Susun kerangka e-book</h3><ol><li>Judul dan tujuan.</li><li>Daftar isi.</li><li>Pengenalan masalah.</li><li>Penjelasan konsep per bab.</li><li>Contoh dan ilustrasi buatan sendiri.</li><li>Langkah penerapan yang aman dan sesuai konteks.</li><li>Rangkuman dan pertanyaan refleksi.</li><li>Daftar referensi bila menggunakan sumber luar.</li></ol><h3>3. Perhatikan kualitas</h3><p>Gunakan bahasa konsisten, ukuran huruf mudah dibaca, tata letak rapi, dan gambar yang relevan. Periksa ejaan, tautan, nomor halaman, dan apakah file dapat dibuka pada perangkat umum.</p><h3>4. Buat deskripsi produk yang jujur</h3><p>Jelaskan isi, jumlah bab atau halaman secara akurat, format file, kebutuhan perangkat, dan siapa yang cocok menggunakannya. Hindari klaim seperti “pasti kaya”, “pasti laku”, atau hasil yang dijamin.</p><h3>5. Hak penggunaan</h3><p>Tentukan apakah pembeli boleh menggunakan file hanya untuk pribadi atau memiliki hak lain. Tuliskan aturan penggunaan dengan jelas. Jangan menjual ulang karya orang lain tanpa izin.</p><div class="example"><strong>Contoh ide e-book:</strong><p>“Panduan Memulai Usaha Makanan Rumahan” dapat memuat riset pelanggan, perencanaan menu, kebersihan, biaya, kemasan, promosi, pencatatan, dan evaluasi. Isinya harus benar-benar dikembangkan, bukan hanya kumpulan judul.</p></div>`},
+ {title:"Membangun Toko Online dan Etalase",body:`<p>Toko online adalah tempat digital untuk menampilkan produk dan menerima pesanan. Bentuknya dapat berupa marketplace, halaman katalog, atau layanan etalase produk. Setiap layanan memiliki ketentuan, biaya, dan fitur yang berbeda.</p><h3>1. Unsur etalase yang jelas</h3><ul><li>Nama toko yang mudah dikenali.</li><li>Foto produk yang sesuai dengan barang sebenarnya.</li><li>Judul dan deskripsi yang informatif.</li><li>Harga dan informasi biaya yang jelas.</li><li>Ketentuan pemesanan, pengiriman, atau pengunduhan.</li><li>Kontak bantuan yang aman dan wajar.</li></ul><h3>2. Contoh layanan yang dapat dipelajari</h3><div class="tools-grid"><div class="tool"><strong>Canva</strong><p>Membuat materi desain, presentasi, dan konten promosi. Periksa lisensi aset yang digunakan.</p><a href="https://www.canva.com/" target="_blank" rel="noopener">Situs resmi ↗</a></div><div class="tool"><strong>Lynk.id</strong><p>Etalase tautan dan produk digital. Pelajari fitur, biaya, serta ketentuan layanan.</p><a href="https://lynk.id/" target="_blank" rel="noopener">Situs resmi ↗</a></div><div class="tool"><strong>Tokopedia</strong><p>Contoh marketplace untuk mempelajari katalog dan proses jual beli barang.</p><a href="https://www.tokopedia.com/" target="_blank" rel="noopener">Situs resmi ↗</a></div><div class="tool"><strong>s.id</strong><p>Layanan tautan dan fitur digital; periksa fitur yang tersedia saat digunakan.</p><a href="https://s.id/" target="_blank" rel="noopener">Situs resmi ↗</a></div></div><h3>3. Periksa ketentuan platform</h3><p>Sebelum menggunakan layanan, baca ketentuan usia, biaya, metode pembayaran, kebijakan pengembalian, privasi, dan jenis produk yang diperbolehkan. Jangan memasukkan data pribadi atau pembayaran ke halaman yang tidak terverifikasi.</p>`},
+ {title:"Branding, Konten, dan Pemasaran Digital",body:`<p>Branding adalah proses membangun identitas dan kesan sebuah usaha. Pemasaran digital menggunakan kanal internet untuk memperkenalkan produk dan berkomunikasi dengan calon pelanggan. Keduanya perlu berangkat dari informasi yang jujur dan manfaat produk yang nyata.</p><h3>1. Bangun identitas</h3><p>Tentukan nama, gaya visual, cara berbicara, dan nilai yang ingin ditampilkan. Identitas sebaiknya konsisten dan tidak meniru merek lain.</p><h3>2. Buat konten bermanfaat</h3><p>Konten dapat berupa penjelasan masalah, tips penggunaan produk, proses pembuatan, contoh hasil, atau jawaban atas pertanyaan umum. Pastikan informasi akurat dan tidak mengungkap data pelanggan tanpa izin.</p><h3>3. Susun pesan promosi</h3><p>Pesan promosi yang baik menjelaskan kebutuhan, manfaat, isi produk, harga atau cara mengetahui harga, dan cara memperoleh informasi lebih lanjut. Hindari tekanan, ketakutan berlebihan, atau janji hasil pasti.</p><h3>4. Kalender konten</h3><p>Rencanakan topik, format, tanggal, dan tujuan setiap unggahan. Evaluasi konten berdasarkan pertanyaan yang diterima, keterlibatan yang wajar, dan apakah informasi dipahami audiens.</p><h3>5. Ukur hasil secara sederhana</h3><ul><li>Berapa orang melihat informasi produk?</li><li>Pertanyaan apa yang paling sering diterima?</li><li>Apakah deskripsi produk sudah jelas?</li><li>Apakah pembeli memahami cara menerima produk?</li><li>Konten mana yang memberi informasi paling berguna?</li></ul>`},
+ {title:"Harga, Biaya, dan Layanan Pelanggan Online",body:`<p>Harga produk online perlu memperhitungkan biaya pembuatan, waktu kerja, biaya platform, biaya pembayaran, promosi, layanan pelanggan, dan kewajiban lain yang berlaku. Produk digital memang tidak membutuhkan pengiriman fisik, tetapi tetap memerlukan waktu dan biaya untuk dibuat serta diperbarui.</p><h3>1. Daftar biaya</h3><p>Catat biaya aplikasi atau alat, aset berlisensi, koneksi internet, biaya layanan platform, biaya transaksi, promosi, dan waktu pengerjaan. Periksa ketentuan biaya langsung dari penyedia layanan karena dapat berubah.</p><h3>2. Tentukan harga dengan pertimbangan</h3><p>Bandingkan biaya, kualitas, manfaat, harga pasar, dan kemampuan pelanggan. Jangan menggunakan harga pesaing sebagai satu-satunya dasar. Pastikan harga dan isi produk disampaikan secara transparan.</p><h3>3. Jelaskan proses pemenuhan</h3><p>Untuk jasa, jelaskan tahap kerja, batas revisi, jadwal, dan hasil akhir. Untuk file digital, jelaskan format, cara menerima file melalui sistem resmi, dan bantuan jika ada masalah teknis.</p><h3>4. Perlindungan pelanggan</h3><p>Jangan meminta kata sandi, kode OTP, atau informasi rahasia pelanggan. Gunakan sistem pembayaran resmi yang disediakan platform. Buat kebijakan bantuan dan pengembalian yang jelas serta sesuai hukum dan ketentuan layanan.</p><h3>5. Kelola keluhan</h3><p>Dengarkan masalah, periksa detail pesanan, jelaskan solusi yang tersedia, dan simpan catatan seperlunya. Komunikasi yang sopan dan cepat dapat membantu menjaga kepercayaan.</p>`},
+ {title:"Keamanan Digital, Etika, dan Legalitas",body:`<p>Bisnis online membutuhkan perhatian pada keamanan akun, privasi, hak cipta, dan aturan perdagangan. Kepercayaan pelanggan dapat rusak jika data disalahgunakan atau informasi produk menyesatkan.</p><h3>1. Jaga keamanan akun</h3><ul><li>Gunakan kata sandi yang kuat dan berbeda untuk setiap layanan.</li><li>Aktifkan fitur keamanan tambahan bila tersedia.</li><li>Jangan membagikan kata sandi atau kode OTP.</li><li>Periksa alamat situs sebelum masuk atau membayar.</li><li>Waspadai pesan yang mengaku sebagai admin dan meminta data rahasia.</li></ul><h3>2. Jaga privasi pelanggan</h3><p>Kumpulkan hanya data yang diperlukan untuk melayani pesanan. Jelaskan penggunaannya, batasi akses, dan jangan menyebarkan informasi pelanggan tanpa dasar yang sah.</p><h3>3. Hak cipta dan kejujuran</h3><p>Gunakan karya sendiri atau aset dengan lisensi yang sesuai. Cantumkan sumber ketika diperlukan. Hindari menyalin e-book, desain, foto, atau merek milik pihak lain.</p><h3>4. Ketentuan usaha</h3><p>Periksa peraturan terkait perdagangan elektronik, perlindungan konsumen, pajak, perizinan, dan ketentuan platform. Kewajiban berbeda menurut jenis produk dan skala usaha.</p><h3>5. Waspadai penipuan</h3><p>Jangan percaya janji penghasilan pasti, permintaan transfer mendesak, atau tawaran yang tidak menjelaskan produk dan risikonya. Verifikasi informasi melalui kanal resmi.</p>`},
+ {title:"Studi Kasus dan Evaluasi Bisnis Online",body:`<p>Bayangkan seseorang membuat e-book panduan belajar desain dasar. Ia menentukan pembaca pemula, menyusun bab, membuat contoh sendiri, memeriksa hak penggunaan gambar, lalu menyiapkan file PDF yang mudah dibaca.</p><h3>Alur kerja</h3><ol><li>Meneliti kebutuhan pembaca.</li><li>Menyusun tujuan dan daftar isi.</li><li>Menulis materi dengan contoh.</li><li>Memeriksa fakta, ejaan, dan hak cipta.</li><li>Menguji file pada beberapa perangkat.</li><li>Membuat deskripsi produk yang akurat.</li><li>Memilih etalase yang sesuai dan membaca ketentuannya.</li><li>Menyiapkan layanan bantuan pelanggan.</li><li>Mengevaluasi masukan dan memperbarui produk.</li></ol><h3>Risiko yang perlu diperhatikan</h3><ul><li>Produk tidak sesuai kebutuhan pembeli.</li><li>File rusak atau sulit dibuka.</li><li>Materi menggunakan aset tanpa izin.</li><li>Deskripsi terlalu berlebihan.</li><li>Biaya layanan tidak dihitung.</li><li>Akun toko mengalami masalah keamanan.</li></ul><h3>Rangkuman</h3><p>Bisnis online bukan sekadar mengunggah produk. Dibutuhkan riset, produk yang bermanfaat, deskripsi yang jujur, sistem pemenuhan, pelayanan, keamanan, dan evaluasi. Teknologi membantu proses, tetapi tanggung jawab penjual tetap penting.</p><h3>Pertanyaan evaluasi</h3><ol><li>Apa perbedaan barang fisik, jasa, dan produk digital?</li><li>Mengapa produk perlu diuji sebelum dijual?</li><li>Informasi apa yang perlu ada pada deskripsi produk?</li><li>Mengapa lisensi aset digital perlu diperiksa?</li><li>Apa saja data rahasia yang tidak boleh diminta dari pelanggan?</li></ol>`}
+ ]},
+crypto:{
+ title:"Crypto Education — Mengenal Blockchain dan Aset Kripto",
+ desc:"Materi pengantar tentang konsep blockchain, aset kripto, istilah, keamanan informasi, dan risiko. Bagian ini bukan panduan transaksi atau rekomendasi investasi.",
+ chapters:[
+ {title:"Mengenal Aset Kripto",body:`<p>Aset kripto adalah aset digital yang menggunakan teknik kriptografi dan sistem jaringan komputer. Sebagian aset kripto berjalan pada jaringan blockchain. Nilai dan penggunaannya dapat berubah-ubah, dan aset ini memiliki risiko yang perlu dipahami.</p><h3>1. Aset digital bukan uang yang nilainya tetap</h3><p>Harga aset kripto dapat berubah dengan cepat. Perubahan dapat dipengaruhi oleh permintaan dan penawaran, berita, kondisi pasar, teknologi, aturan, serta faktor lain. Tidak ada jaminan nilainya akan naik.</p><h3>2. Mengapa orang membicarakannya?</h3><p>Teknologi ini menarik perhatian karena menawarkan cara pencatatan dan pemindahan data melalui jaringan. Namun, ketertarikan terhadap teknologi tidak berarti setiap aset atau proyek memiliki manfaat, keamanan, atau kelayakan yang sama.</p><h3>3. Bedakan teknologi dan aset</h3><p>Blockchain adalah teknologi pencatatan data. Aset kripto merupakan salah satu penggunaan yang dapat berjalan di jaringan tertentu. Menilai teknologi dan menilai risiko suatu aset merupakan dua hal yang berbeda.</p><div class="callout">Materi ini hanya untuk literasi teknologi dan risiko. Tidak memberikan instruksi membuka akun, membeli, menjual, menyimpan, atau memperdagangkan aset kripto.</div><h3>4. Istilah dasar</h3><ul><li><b>Kriptografi:</b> teknik untuk melindungi informasi.</li><li><b>Jaringan:</b> perangkat yang saling berkomunikasi.</li><li><b>Volatilitas:</b> tingkat perubahan nilai atau harga.</li><li><b>Proyek:</b> sistem atau aplikasi yang dibangun dengan teknologi tertentu.</li></ul>`},
+ {title:"Memahami Blockchain",body:`<p>Blockchain dapat dipahami sebagai sistem pencatatan digital yang menyimpan data dalam kelompok-kelompok catatan yang saling terhubung. Pada jaringan tertentu, salinan catatan disimpan dan diperiksa oleh banyak komputer yang mengikuti aturan jaringan.</p><h3>1. Mengapa disebut rantai blok?</h3><p>Data dikelompokkan ke dalam blok. Blok-blok tersebut dihubungkan secara kriptografis sehingga perubahan pada catatan lama dapat diketahui oleh mekanisme jaringan. Detail teknis berbeda antara satu sistem dan sistem lainnya.</p><h3>2. Peran peserta jaringan</h3><p>Komputer atau peserta jaringan dapat membantu menyimpan, menyebarkan, atau memeriksa data sesuai protokol. Tidak semua blockchain bekerja dengan cara yang sama; beberapa jaringan lebih terbuka, sedangkan yang lain membatasi siapa yang dapat berpartisipasi.</p><h3>3. Contoh penggunaan</h3><ul><li>Pencatatan transaksi aset digital.</li><li>Pelacakan data tertentu dalam rantai pasok.</li><li>Aplikasi yang menggunakan kontrak pintar.</li><li>Pencatatan digital pada sistem yang dirancang khusus.</li></ul><h3>4. Keterbatasan</h3><p>Blockchain bukan solusi untuk semua masalah. Sistem dapat memiliki keterbatasan kecepatan, biaya, konsumsi sumber daya, privasi, tata kelola, dan kesalahan aplikasi. Data yang tercatat juga tidak otomatis benar hanya karena tersimpan pada blockchain.</p><h3>5. Pertanyaan refleksi</h3><ol><li>Apa fungsi blok dan hubungan antardata?</li><li>Mengapa blockchain tidak otomatis menjamin kebenaran semua informasi?</li><li>Sebutkan satu contoh penggunaan dan satu keterbatasannya.</li></ol>`},
+ {title:"Cara Kerja Jaringan dan Istilah Penting",body:`<p>Jaringan blockchain memiliki aturan untuk menyebarkan dan menyepakati catatan. Aturan tersebut sering disebut protokol atau mekanisme konsensus. Tujuannya agar peserta jaringan memiliki cara untuk menentukan catatan mana yang diterima.</p><h3>1. Node</h3><p>Node adalah komputer atau perangkat lunak yang terhubung ke jaringan dan menjalankan fungsi tertentu, seperti menerima atau memeriksa data.</p><h3>2. Transaksi</h3><p>Transaksi adalah pesan atau instruksi yang diajukan ke jaringan. Jaringan memeriksa apakah transaksi memenuhi aturan yang berlaku. Penjelasan ini bersifat konseptual; detail pelaksanaan berbeda menurut jaringan.</p><h3>3. Mekanisme konsensus</h3><p>Konsensus adalah cara peserta jaringan menyepakati urutan atau keabsahan catatan. Ada beragam pendekatan dengan kelebihan, keterbatasan, dan kebutuhan sumber daya yang berbeda.</p><h3>4. Kontrak pintar</h3><p>Kontrak pintar adalah program yang berjalan pada jaringan tertentu dan dapat menjalankan aturan ketika kondisi yang ditentukan terpenuhi. Program dapat memiliki bug, sehingga tidak boleh dianggap selalu aman atau bebas kesalahan.</p><h3>5. Biaya dan kapasitas</h3><p>Jaringan tertentu mengenakan biaya untuk pemrosesan data. Biaya dan waktu pemrosesan dapat berubah sesuai kondisi jaringan. Hal ini menjadi salah satu pertimbangan dalam desain sistem.</p>`},
+ {title:"Wallet, Kunci Digital, dan Keamanan",body:`<p>Dalam ekosistem aset digital, istilah wallet sering digunakan untuk perangkat lunak atau perangkat yang membantu mengelola informasi kriptografis terkait aset. Wallet bukan dompet fisik dan tidak selalu menyimpan aset seperti uang di dalam tas. Konsep kunci digital dan akses perlu dipahami dengan hati-hati.</p><h3>1. Kunci dan akses</h3><p>Sistem tertentu menggunakan pasangan informasi kriptografis untuk membuktikan kewenangan atas alamat atau aset. Jika informasi rahasia hilang atau diketahui orang lain, akses dapat terganggu atau disalahgunakan.</p><h3>2. Risiko penipuan</h3><ul><li>Pesan palsu yang menyamar sebagai layanan resmi.</li><li>Permintaan kata sandi, kode rahasia, atau kode OTP.</li><li>Janji keuntungan tetap atau hadiah yang tidak masuk akal.</li><li>Aplikasi atau situs tiruan.</li><li>Orang yang mengaku dapat memulihkan aset dengan meminta pembayaran.</li></ul><h3>3. Kebiasaan keamanan umum</h3><p>Jangan membagikan kata sandi, kode OTP, atau informasi rahasia. Periksa identitas penyedia layanan melalui sumber resmi. Jangan memasang aplikasi dari sumber tidak dikenal. Jika ada pesan mencurigakan, hentikan komunikasi dan minta bantuan orang dewasa tepercaya.</p><h3>4. Kesalahan tidak selalu dapat dibatalkan</h3><p>Beberapa sistem digital tidak menyediakan mekanisme pembatalan seperti layanan konsumen biasa. Karena itu, memahami risiko dan tidak terburu-buru sangat penting.</p><div class="callout">Jangan pernah mengirimkan kode rahasia atau informasi akses kepada siapa pun, termasuk orang yang mengaku sebagai admin, petugas bantuan, atau teman.</div>`},
+ {title:"Risiko, Penipuan, dan Informasi Menyesatkan",body:`<p>Risiko aset kripto mencakup perubahan harga yang tajam, proyek yang gagal, penipuan, kesalahan teknologi, pencurian informasi, masalah layanan, dan perubahan aturan. Materi promosi sering menonjolkan kemungkinan keuntungan tetapi tidak selalu menjelaskan kemungkinan kerugian.</p><h3>1. Waspadai janji hasil pasti</h3><p>Tidak ada dasar yang dapat menjamin keuntungan dari perubahan harga aset berisiko. Klaim “pasti untung”, “tanpa risiko”, atau “hasil tetap” perlu dicurigai.</p><h3>2. Waspadai tekanan untuk bertindak cepat</h3><p>Penipu dapat membuat situasi seolah-olah kesempatan akan segera hilang. Jangan mengambil keputusan karena takut tertinggal. Berhenti dan periksa informasi dari sumber independen.</p><h3>3. Periksa sumber informasi</h3><p>Perhatikan siapa penerbit informasi, apakah ada bukti yang dapat diperiksa, apakah klaim didukung sumber tepercaya, dan apakah terdapat konflik kepentingan. Unggahan media sosial bukan bukti yang cukup.</p><h3>4. Risiko teknologi</h3><p>Bug, gangguan jaringan, kelemahan keamanan, dan kesalahan manusia dapat memengaruhi layanan. Sistem yang menggunakan teknologi baru tetap perlu diuji dan diawasi.</p><h3>5. Perlindungan diri</h3><p>Jangan mengirim uang atau data karena tekanan orang lain. Jangan mengunduh aplikasi dari tautan acak. Untuk keputusan yang menyangkut keuangan, mintalah bantuan orang tua/wali dan periksa informasi resmi yang berlaku.</p>`},
+ {title:"Regulasi dan Literasi Aset Digital di Indonesia",body:`<p>Aturan aset keuangan digital dapat berubah. Di Indonesia, masyarakat perlu memeriksa informasi terkini dari otoritas dan lembaga resmi yang berwenang. Jangan mengandalkan unggahan anonim atau promosi pihak yang berkepentingan.</p><h3>1. Mengapa regulasi penting?</h3><p>Aturan dapat mengatur kegiatan penyedia layanan, perlindungan konsumen, pelaporan, pencegahan penyalahgunaan, dan kewajiban lain. Ketentuan dapat berbeda menurut jenis produk dan aktivitas.</p><h3>2. Periksa sumber resmi</h3><p>Gunakan situs resmi Otoritas Jasa Keuangan (OJK), Bank Indonesia, dan instansi pemerintah terkait untuk memahami kebijakan yang berlaku. Periksa tanggal publikasi karena aturan dapat diperbarui.</p><h3>3. Jangan menyamakan promosi dengan izin</h3><p>Logo, testimoni, jumlah pengikut, atau iklan bukan bukti bahwa suatu layanan memiliki izin yang sesuai. Verifikasi langsung melalui daftar dan pengumuman resmi yang relevan.</p><h3>4. Sikap literasi yang bertanggung jawab</h3><p>Memahami teknologi tidak mewajibkan seseorang untuk menggunakan atau memiliki aset digital. Pengetahuan dapat dipelajari sebagai bagian dari perkembangan teknologi dan ekonomi digital.</p>`},
+ {title:"Rangkuman dan Evaluasi Crypto Education",body:`<p>Blockchain adalah salah satu teknologi pencatatan digital. Aset kripto merupakan salah satu bentuk penggunaan teknologi digital, tetapi memiliki karakteristik dan risiko yang berbeda-beda. Harga dapat berubah tajam dan layanan dapat menghadapi masalah teknologi, keamanan, maupun regulasi.</p><h3>Pokok pembelajaran</h3><ul><li>Blockchain bukan solusi untuk semua masalah.</li><li>Data digital tidak otomatis benar hanya karena dicatat pada jaringan.</li><li>Teknologi dan nilai aset adalah hal yang berbeda.</li><li>Informasi akses rahasia harus dilindungi.</li><li>Janji keuntungan pasti dan tekanan untuk bertindak cepat merupakan tanda bahaya.</li><li>Informasi aturan harus diperiksa dari sumber resmi terbaru.</li></ul><h3>Pertanyaan evaluasi</h3><ol><li>Apa yang dimaksud blockchain?</li><li>Apa perbedaan teknologi blockchain dan aset kripto?</li><li>Mengapa volatilitas menjadi risiko?</li><li>Mengapa kode rahasia tidak boleh dibagikan?</li><li>Bagaimana cara memeriksa informasi regulasi?</li></ol><div class="callout">Bagian ini merupakan pendidikan umum, bukan nasihat keuangan atau petunjuk transaksi. Fokus pembelajaran adalah memahami konsep, keamanan, dan risiko.</div>`}
+ ]},
+investment:{
+ title:"Investment Education — Literasi dan Dasar Investasi",
+ desc:"Memahami tujuan keuangan, konsep investasi, jenis instrumen, hubungan risiko dan potensi hasil, serta cara mengenali informasi yang dapat dipercaya.",
+ chapters:[
+ {title:"Mengenal Investasi dan Tujuannya",body:`<p>Investasi adalah kegiatan menempatkan dana atau sumber daya pada suatu aset atau kegiatan dengan harapan memperoleh manfaat pada masa mendatang. Hasilnya tidak selalu positif. Nilai dapat naik, tetap, atau turun, bergantung pada jenis instrumen dan kondisi yang memengaruhinya.</p><h3>1. Bedakan menabung dan investasi</h3><p>Menabung umumnya bertujuan menyimpan uang agar dapat digunakan ketika dibutuhkan. Investasi memiliki tujuan memperoleh pertumbuhan atau manfaat dalam jangka waktu tertentu, tetapi dapat memiliki risiko nilai berkurang. Keduanya memiliki fungsi yang berbeda dalam perencanaan keuangan.</p><h3>2. Tentukan tujuan keuangan</h3><p>Tujuan keuangan dapat berupa kebutuhan pendidikan, kebutuhan masa depan, atau rencana jangka panjang. Tujuan perlu disesuaikan dengan waktu, kemampuan, dan prioritas. Uang untuk kebutuhan dekat tidak seharusnya diperlakukan sama dengan dana yang memang direncanakan untuk jangka panjang.</p><h3>3. Pahami kondisi pribadi</h3><p>Sebelum mempelajari produk keuangan, pahami pemasukan, pengeluaran, kewajiban, kebutuhan pokok, dan dana cadangan. Jangan menggunakan uang kebutuhan penting untuk mengejar hasil yang belum pasti.</p><h3>4. Investasi bukan jalan pintas</h3><p>Investasi memerlukan pengetahuan, kesabaran, dan pemahaman risiko. Tidak ada produk yang menjamin hasil tinggi tanpa risiko. Waspadai pihak yang menjanjikan keuntungan tetap atau meminta keputusan segera.</p>`},
+ {title:"Hubungan Risiko, Waktu, dan Potensi Hasil",body:`<p>Risiko adalah kemungkinan hasil yang terjadi berbeda dari harapan, termasuk kemungkinan kehilangan sebagian nilai atau dana. Setiap instrumen memiliki karakteristik risiko yang berbeda. Potensi hasil yang lebih tinggi sering disertai ketidakpastian yang lebih besar, tetapi hubungan ini tidak berarti hasil tinggi pasti akan terjadi.</p><h3>1. Risiko nilai</h3><p>Nilai suatu aset dapat berubah karena kondisi ekonomi, kinerja penerbit, permintaan dan penawaran, suku bunga, kebijakan, dan faktor lainnya.</p><h3>2. Risiko likuiditas</h3><p>Likuiditas berkaitan dengan kemudahan mengubah aset menjadi uang tanpa perubahan nilai yang besar. Tidak semua aset dapat dijual atau dicairkan dengan cepat.</p><h3>3. Risiko penerbit dan pihak pengelola</h3><p>Produk dapat dipengaruhi kondisi pihak yang menerbitkan atau mengelolanya. Karena itu, informasi tentang pihak terkait dan dokumen resmi perlu dipahami.</p><h3>4. Waktu dan tujuan</h3><p>Jangka waktu memengaruhi cara seseorang menilai perubahan nilai. Tujuan yang waktunya dekat membutuhkan pertimbangan berbeda dibanding tujuan yang jauh. Tidak ada satu pilihan yang cocok untuk semua orang.</p><h3>5. Jangan hanya melihat hasil masa lalu</h3><p>Kinerja masa lalu tidak menjamin hasil masa depan. Grafik kenaikan pada periode tertentu tidak cukup untuk menggambarkan semua risiko.</p>`},
+ {title:"Mengenal Saham secara Umum",body:`<p>Saham adalah bukti kepemilikan atas bagian suatu perusahaan sesuai ketentuan yang berlaku. Perusahaan dapat menerbitkan saham untuk berbagai tujuan pendanaan. Pemegang saham dapat memperoleh manfaat jika nilai atau kinerja perusahaan berkembang, tetapi juga dapat mengalami penurunan nilai.</p><h3>1. Apa yang memengaruhi perusahaan?</h3><p>Kinerja perusahaan dapat dipengaruhi penjualan, biaya, persaingan, kualitas pengelolaan, kondisi ekonomi, inovasi, dan perubahan aturan. Karena itu, memahami perusahaan memerlukan lebih dari sekadar melihat perubahan harga.</p><h3>2. Dividen dan perubahan nilai</h3><p>Dalam kondisi tertentu perusahaan dapat membagikan dividen sesuai keputusan dan ketentuan. Dividen tidak selalu dibagikan dan jumlahnya tidak dijamin. Nilai saham juga dapat berubah sehingga ada risiko kerugian.</p><h3>3. Informasi yang perlu dibaca</h3><p>Laporan keuangan, keterbukaan informasi, kegiatan usaha, risiko, dan pengumuman resmi dapat membantu memahami perusahaan. Informasi perlu diperiksa secara kritis dan tidak hanya berdasarkan rumor.</p><h3>4. Risiko</h3><p>Harga saham dapat turun, perusahaan dapat mengalami kesulitan, dan investor dapat kehilangan sebagian nilai dana. Materi ini hanya menjelaskan konsep, bukan menyarankan saham tertentu.</p>`},
+ {title:"Mengenal Reksa Dana dan Obligasi",body:`<p>Reksa dana adalah wadah yang menghimpun dana dari banyak pemodal untuk dikelola sesuai kebijakan investasi yang dijelaskan dalam dokumen produk. Obligasi merupakan surat utang yang memiliki ketentuan pembayaran sesuai penerbitan. Keduanya memiliki struktur, risiko, dan karakteristik yang berbeda.</p><h3>1. Reksa dana</h3><p>Pengelolaan reksa dana dilakukan oleh pihak profesional sesuai aturan dan kebijakan produk. Jenis aset dalam portofolio, biaya, risiko, dan tujuan produk perlu dibaca pada dokumen resminya. Nilai unit dapat berubah.</p><h3>2. Obligasi</h3><p>Obligasi berkaitan dengan pinjaman kepada penerbit. Risiko dapat mencakup kemampuan penerbit memenuhi kewajiban, perubahan suku bunga, likuiditas, dan ketentuan produk.</p><h3>3. Jangan hanya melihat nama produk</h3><p>Periksa dokumen informasi, biaya, risiko, pihak pengelola atau penerbit, jangka waktu, dan ketentuan pencairan. Nama yang terdengar aman tidak otomatis membuat suatu produk bebas risiko.</p><h3>4. Informasi resmi</h3><p>Gunakan dokumen produk dan informasi dari lembaga yang berwenang. Jika ada istilah yang tidak dipahami, cari penjelasan dari sumber pendidikan yang tepercaya sebelum membuat keputusan.</p>`},
+ {title:"Diversifikasi dan Perencanaan Keuangan",body:`<p>Diversifikasi adalah konsep menyebarkan penempatan dana pada beberapa jenis aset atau sumber risiko agar ketergantungan pada satu aset berkurang. Diversifikasi tidak menghapus semua risiko dan tidak menjamin keuntungan.</p><h3>1. Mengapa diversifikasi dibahas?</h3><p>Jika seluruh nilai bergantung pada satu perusahaan atau satu jenis aset, perubahan pada aset tersebut dapat berdampak besar. Penyebaran dapat membantu mengelola konsentrasi risiko, tetapi aset yang berbeda pun dapat turun bersamaan.</p><h3>2. Sesuaikan dengan tujuan</h3><p>Perencanaan perlu mempertimbangkan kebutuhan sehari-hari, kewajiban, dana cadangan, waktu penggunaan dana, dan toleransi terhadap ketidakpastian. Jangan meniru pilihan orang lain tanpa memahami kondisinya.</p><h3>3. Evaluasi secara berkala</h3><p>Periksa apakah rencana masih sesuai dengan tujuan dan kondisi. Hindari perubahan keputusan hanya karena berita sesaat atau tekanan media sosial.</p><h3>4. Literasi sebelum keputusan</h3><p>Pahami biaya, pajak yang relevan, risiko, aturan, dan pihak penyedia. Untuk keputusan pribadi, gunakan bantuan orang tua/wali dan tenaga profesional yang berizin sesuai kebutuhan.</p>`},
+ {title:"Mengenali Penipuan Investasi",body:`<p>Penipuan investasi sering menggunakan janji hasil besar, testimoni, tampilan profesional, atau tekanan untuk segera bergabung. Beberapa penawaran meminta uang tambahan untuk membuka keuntungan atau menarik dana. Masyarakat perlu memeriksa informasi sebelum mempercayai suatu tawaran.</p><h3>1. Tanda yang perlu dicurigai</h3><ul><li>Keuntungan tinggi yang dijanjikan pasti.</li><li>Risiko dikatakan tidak ada.</li><li>Penjelasan usaha atau sumber hasil tidak masuk akal.</li><li>Diminta merekrut orang untuk memperoleh imbalan.</li><li>Diminta mentransfer uang ke rekening pribadi tanpa penjelasan sah.</li><li>Diberi tekanan agar segera membayar.</li><li>Identitas dan izin tidak dapat diverifikasi.</li></ul><h3>2. Cara memeriksa informasi</h3><p>Periksa identitas perusahaan, dokumen penawaran, pihak yang bertanggung jawab, izin yang relevan, dan pengumuman resmi. Jangan mengandalkan tangkapan layar atau testimoni saja.</p><h3>3. Jika menemukan tawaran mencurigakan</h3><p>Jangan mengirim uang atau data pribadi. Simpan bukti komunikasi secara aman dan bicarakan dengan orang tua/wali atau pihak berwenang. Gunakan kanal pengaduan resmi yang berlaku.</p><div class="callout">Jika seseorang menjamin keuntungan tanpa risiko, perlakukan klaim tersebut sebagai tanda bahaya dan lakukan pemeriksaan lebih lanjut.</div>`},
+ {title:"Membaca Informasi dan Sumber Resmi",body:`<p>Informasi keuangan dapat berasal dari perusahaan, media, lembaga pendidikan, regulator, atau pengguna media sosial. Kualitas dan tujuan setiap sumber berbeda. Pembaca perlu memeriksa siapa yang menyampaikan informasi dan apakah ada kepentingan di baliknya.</p><h3>1. Periksa penerbit</h3><p>Apakah informasi berasal dari lembaga resmi, dokumen perusahaan, peneliti, atau akun anonim? Periksa identitas dan reputasi penerbit.</p><h3>2. Periksa tanggal dan konteks</h3><p>Informasi lama dapat tidak sesuai dengan aturan atau kondisi terbaru. Pastikan tanggal, periode data, dan konteksnya jelas.</p><h3>3. Bedakan fakta dan pendapat</h3><p>Fakta perlu didukung data yang dapat diperiksa. Pendapat merupakan penilaian seseorang. Keduanya dapat berguna, tetapi jangan menyamakan opini dengan kepastian.</p><h3>4. Referensi edukasi</h3><div class="tools-grid"><div class="tool"><strong>OJK</strong><p>Informasi literasi dan perlindungan konsumen sektor jasa keuangan.</p><a href="https://www.ojk.go.id/" target="_blank" rel="noopener">Situs resmi ↗</a></div><div class="tool"><strong>Bank Indonesia</strong><p>Informasi sistem pembayaran, kebijakan, dan edukasi keuangan.</p><a href="https://www.bi.go.id/" target="_blank" rel="noopener">Situs resmi ↗</a></div><div class="tool"><strong>Sikapi Uangmu</strong><p>Materi edukasi keuangan dari OJK.</p><a href="https://sikapiuangmu.ojk.go.id/" target="_blank" rel="noopener">Situs resmi ↗</a></div><div class="tool"><strong>Kontak OJK</strong><p>Periksa kanal resmi untuk informasi atau pengaduan konsumen.</p><a href="https://www.ojk.go.id/" target="_blank" rel="noopener">Informasi OJK ↗</a></div></div><p>Periksa kembali alamat situs dan informasi terbaru sebelum mengandalkannya.</p>`},
+ {title:"Rangkuman dan Evaluasi Investasi",body:`<p>Investasi berkaitan dengan tujuan, waktu, potensi hasil, dan risiko. Instrumen seperti saham, reksa dana, dan obligasi memiliki karakteristik yang berbeda. Tidak ada produk yang cocok untuk semua orang dan tidak ada hasil yang dijamin.</p><h3>Pokok pembelajaran</h3><ul><li>Tentukan tujuan dan pahami kondisi keuangan.</li><li>Bedakan tabungan dan investasi.</li><li>Kenali risiko nilai, likuiditas, dan pihak penerbit atau pengelola.</li><li>Baca dokumen resmi dan pahami biaya.</li><li>Jangan mengambil keputusan karena tekanan atau janji hasil pasti.</li><li>Periksa legalitas dan informasi dari sumber resmi.</li></ul><h3>Pertanyaan evaluasi</h3><ol><li>Apa perbedaan menabung dan investasi?</li><li>Mengapa hasil investasi tidak dapat dijamin?</li><li>Apa yang dimaksud diversifikasi?</li><li>Apa perbedaan umum saham, reksa dana, dan obligasi?</li><li>Sebutkan tiga tanda penawaran investasi yang mencurigakan.</li><li>Mengapa tanggal dan penerbit sumber informasi perlu diperiksa?</li></ol><div class="callout">Materi ini adalah pengantar literasi keuangan, bukan nasihat investasi atau rekomendasi produk tertentu. Keputusan keuangan pribadi perlu mempertimbangkan usia, kebutuhan, aturan, dan bantuan pihak tepercaya.</div>`}
+ ]}
+};
+
+let activeCategory=null,activeChapter=0;
+function toggleNav(){document.getElementById('navlinks').classList.toggle('open')}
+function closeNav(){document.getElementById('navlinks').classList.remove('open')}
+function showHome(){
+ document.getElementById('homePage').style.display='block';
+ document.getElementById('categoryPage').classList.remove('active');
+ document.getElementById('storePage').classList.remove('active');
+ window.scrollTo({top:0,behavior:'smooth'});closeNav();
+}
+function openCategory(key){
+ activeCategory=key;activeChapter=0;
+ document.getElementById('homePage').style.display='none';
+ document.getElementById('storePage').classList.remove('active');
+ document.getElementById('categoryPage').classList.add('active');
+ renderCategory();window.scrollTo({top:0,behavior:'smooth'});closeNav();
+}
+function renderCategory(){
+ const data=CATEGORIES[activeCategory];if(!data)return;
+ document.getElementById('categoryTitle').textContent=data.title;
+ document.getElementById('categoryDescription').textContent=data.desc;
+ document.getElementById('chapterCount').textContent=data.chapters.length+' bab pembelajaran';
+ const list=document.getElementById('chapterList');list.innerHTML='';
+ data.chapters.forEach((ch,i)=>{
+  const li=document.createElement('li');const b=document.createElement('button');
+  b.className=i===activeChapter?'selected':'';
+  b.innerHTML='<span class="num">'+(i+1)+'</span>'+escapeHTML(ch.title);
+  b.onclick=()=>{activeChapter=i;renderCategory();document.querySelector('.article').scrollIntoView({behavior:'smooth',block:'start'})};
+  li.appendChild(b);list.appendChild(li);
+ });
+ const chapter=data.chapters[activeChapter];
+ document.getElementById('articleContent').innerHTML=
+  '<div class="article-meta">SSSC Learning Library · Bab '+(activeChapter+1)+' dari '+data.chapters.length+'</div>'+
+  '<h2>'+escapeHTML(chapter.title)+'</h2>'+chapter.body;
+ document.getElementById('progressBar').style.width=((activeChapter+1)/data.chapters.length*100)+'%';
+ document.getElementById('prevBtn').disabled=activeChapter===0;
+ document.getElementById('nextBtn').disabled=activeChapter===data.chapters.length-1;
+ document.getElementById('nextBtn').textContent=activeChapter===data.chapters.length-1?'Bab selesai ✓':'Selanjutnya →';
+}
+function changeChapter(step){
+ const data=CATEGORIES[activeCategory];const next=activeChapter+step;
+ if(!data||next<0||next>=data.chapters.length)return;
+ activeChapter=next;renderCategory();
+ document.querySelector('.article').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function searchCategories(){
+ const q=document.getElementById('categorySearch').value.toLowerCase();
+ document.querySelectorAll('.category-card').forEach(card=>{
+  card.style.display=card.dataset.search.includes(q)?'flex':'none';
+ });
+}
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
